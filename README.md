@@ -49,3 +49,5 @@ Lots of stuff are already still to be done, only a few samples are available, so
 
 Many thank's to schungx for his Dojo AMD 1.9 binding. That help a lot.
 
+Many thank's to Fabrice Leray for his First Version on the typescript binding (legacy style) [https://github.com/fleray/esri_web_playground](https://github.com/fleray/esri_web_playground)
+
