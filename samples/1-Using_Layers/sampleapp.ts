@@ -1,3 +1,7 @@
+
+// Module AMD associated to the sample application
+
+
 /// <reference path="../../ESRI-TypeScript/esri.amd.d.ts" />
 
 import ready = require("dojo/ready");

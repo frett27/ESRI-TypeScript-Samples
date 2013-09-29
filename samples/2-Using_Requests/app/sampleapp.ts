@@ -11,6 +11,7 @@ return function() {
 	// get reference of RequestWidget
 	var w : Custom.RequestWidget = <Custom.RequestWidget>registry.byId("req");
 
+	// call methods on the widget
 
 
 };

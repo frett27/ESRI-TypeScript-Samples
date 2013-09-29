@@ -1,11 +1,11 @@
 <div>
 	<div class="control-group" dojoAttachPoint="group" >
-		<input type="input" label="url" dojoAttachPoint="url" data-dojo-type="dijit/form/TextBox" placeHolder="URL to send request">
+		<input type="input" label="url" data-dojo-attach-point="url" data-dojo-type="dijit/form/TextBox" placeHolder="URL to send request">
 		<br/>
-		<textarea dojoAttachPoint="jsonrequest" ></textarea>
+		<textarea data-dojo-attach-point="jsonrequest" data-dojo-type="dijit/form/TextBox"></textarea>
 		<br/>
-		<textarea dojoAttachPoint="jsonresponse" ></textarea>
+		<textarea data-dojo-attach-point="jsonresponse" data-dojo-type="dijit/form/TextBox"></textarea>
 		<br/>
-		<div data-dojo-type="dijit/form/Button" label="Envoyer" dojoAttachPoint="ok"></div>
+		<div data-dojo-type="dijit/form/Button" label="Envoyer" data-dojo-attach-point="ok"></div>
 	</div>
 </div>
