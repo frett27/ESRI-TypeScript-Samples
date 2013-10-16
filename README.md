@@ -2,7 +2,7 @@ ESRI-TypeScript-Samples ![](https://travis-ci.org/frett27/ESRI-TypeScript-Sample
 =======================
 
 
-This repository demonstrate the use of ESRI-TypeScript project to bring typing to [ESRI Javascript API version 3.4](https://developers.arcgis.com/en/javascript/)
+This repository demonstrate the use of ESRI-TypeScript project to bring typing to [ESRI Javascript API version](https://developers.arcgis.com/en/javascript/)
 
 
 Warning
