@@ -59,7 +59,8 @@ module.exports = function(grunt) {
             dev: {
                 path: 'http://localhost:8080/index.html'
             }
-        },
+        }
+        /*,
         yuidoc: {
             compile: {
                 name: '<%= pkg.name %>',
@@ -72,7 +73,7 @@ module.exports = function(grunt) {
                     outdir: 'docs/'
                 }
             }
-        }
+        }*/
 
 
 
@@ -83,10 +84,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');
-    grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    //grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
     // Default task(s).
-    grunt.registerTask('default', ['typescript', 'connect', 'yuidoc', 'open', 'watch']);
+    //grunt.registerTask('default', ['typescript', 'connect', 'yuidoc', 'open', 'watch']);
+    grunt.registerTask('default', ['typescript', 'connect', 'open', 'watch']);
 
 
 };
