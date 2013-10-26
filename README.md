@@ -1,14 +1,21 @@
+
 ESRI-TypeScript-Samples ![](https://travis-ci.org/frett27/ESRI-TypeScript-Samples.png?branch=master)
 =======================
 
 
-This repository demonstrate the use of ESRI-TypeScript project to bring typing to [ESRI Javascript API version](https://developers.arcgis.com/en/javascript/)
+This repository demonstrate the use of ESRI-TypeScript definition to bring typing to [ESRI Javascript API version 3.4 - 3.7](https://developers.arcgis.com/en/javascript/). 
 
 
-Warning
+What's New
 --------
 
-The work is currently in progress, part of the mapping are available, but we hope that the community will appreciate and bring helpful contributions.
+__Since : 27/10/2013__, we include a translation of the boilerplate project in typescript [https://github.com/Esri/application-boilerplate-js](https://github.com/Esri/application-boilerplate-js), permitting to start developping some ArcGIS Online templates.
+
+
+Disclamer
+--------
+
+The work is currently in progress, a big part of the mapping are available, but we hope that the community will appreciate and bring helpful contributions. We started to build applications on this ibrary that permit to see real world usage of the binding.
 
 
 Getting Started with this version
