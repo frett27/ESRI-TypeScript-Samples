@@ -1,6 +1,3 @@
-[submodule "Dojo-TypeScript"]
-	path = Dojo-TypeScript
-	url = git://github.com/schungx/Dojo-TypeScript
 [submodule "ESRI-TypeScript"]
 	path = ESRI-TypeScript
 	url = git://github.com/frett27/ESRI-TypeScript.git
