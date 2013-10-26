@@ -13,6 +13,7 @@ import json = require("dojo/json");
 function logProperty(o : Object) : Object
 {
 	try {
+
 		json.stringify(o);
 		return o;
 	} catch(e)

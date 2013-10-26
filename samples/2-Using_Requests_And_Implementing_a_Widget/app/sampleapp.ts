@@ -1,8 +1,6 @@
 
-
 // this is the main app function
 // this example show how to use the widget from outside
-
 
 
 /// <reference path="../../../ESRI-TypeScript/esri.amd.d.ts" />
