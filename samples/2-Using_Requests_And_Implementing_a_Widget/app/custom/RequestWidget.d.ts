@@ -18,6 +18,7 @@ declare module Custom {
 		jsonresponse : dijit.form.TextBox;
 		url : dijit.form.TextBox;
 
+		// widgets specific methods for external use
 		
 		launchRequest(url : string, parameters : Object, callback : (result:string) => void)  : void ;
 
