@@ -11,6 +11,8 @@ declare module Config {
 
 		oauthappid : string;
 		group : string;
+		i18n? : any;
+		helperServices? : any;
 	}
 
 }

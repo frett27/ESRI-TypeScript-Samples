@@ -38,7 +38,7 @@ function constructor (supportsLocalization) {
 
 //Get URL parameters and set applciation defaults needed to query arcgis.com for 
 //an applciation and to see if the app is running in Portal or an Org
-function _init () : dojo.Promise<void> {
+function _init () : dojo.Promise<any> {
 	var self : Application.Template = this;
 
 	var deferred = new Deferred();
@@ -125,7 +125,7 @@ function _initializeApplication () {
 	}
 }
 
-function _setupOAuth (id, portal) {
+function _setupOAuth (id, portal) : void{
 	OAuthHelper.init({
 		appId: id,
 		portal: portal,
@@ -133,19 +133,20 @@ function _setupOAuth (id, portal) {
 	});
 }
 
-function _getLocalization () {
-	var deferred = new Deferred();
-	if (this.localize) {
-		require(["dojo/i18n!application/nls/resources"], lang.hitch(this, function(appBundle) {
+function _getLocalization () : dojo.Promise<any> {
+	var self : Application.Template = this;
+	var deferred = new Deferred<void>();
+	if (self.localize) {
+		require(["dojo/i18n!application/nls/resources"], lang.hitch(self, function(appBundle) {
 			//Get the localization strings for the template and store in an i18n variable. Also determine if the 
 			//application is in a right-to-left language like Arabic or Hebrew. 
-			this.config.i18n = appBundle || {};
+			self.config.i18n = appBundle || {};
 			//Bi-directional language support added to support right-to-left languages like Arabic and Hebrew
 			//Note: The map must stay ltr  
-			this.config.i18n.direction = "ltr";
-			array.some(["ar", "he"], lang.hitch(this, function(l) {
+			self.config.i18n.direction = "ltr";
+			array.some(["ar", "he"], lang.hitch(self, function(l) {
 				if (kernel.locale.indexOf(l) !== -1) {
-					this.config.i18n.direction = "rtl";
+					self.config.i18n.direction = "rtl";
 					return true;
 				} else {
 					return false;
@@ -154,7 +155,7 @@ function _getLocalization () {
 			//add a dir attribute to the html tag. Then you can add special css classes for rtl languages
 			var dirNode = document.getElementsByTagName("html")[0];
 			var classes = dirNode.className;
-			if (this.config.i18n.direction === "rtl") {
+			if (self.config.i18n.direction === "rtl") {
 				//need to add support for dj_rtl. 
 				//if the dir node is set when the app loads dojo will handle. 
 				dirNode.setAttribute("dir", "rtl");
@@ -164,7 +165,7 @@ function _getLocalization () {
 				dirNode.setAttribute("dir", "ltr");
 				domClass.add(dirNode, "esirLTR");
 			}
-			deferred.resolve(this.config.i18n);
+			deferred.resolve(self.config.i18n);
 		}));
 	} else {
 		deferred.resolve(null);
@@ -172,18 +173,19 @@ function _getLocalization () {
 	return deferred.promise;
 }
 
-function _queryApplicationConfiguration () {
+function _queryApplicationConfiguration () : dojo.Promise<any>{
+	var self : Application.Template = this;
 	//If there is an application id query arcgis.com using esri.arcgis.utils.getItem to get the item info.
 	// If the item info includes itemData.values then the app was configurable so overwrite the
 	// default values with the configured values. 
 	var deferred = new Deferred();
-	if (this.config.appid) {
-		arcgisUtils.getItem(this.config.appid).then(lang.hitch(this, function(response) {
-			lang.mixin(this.config, response.itemData.values);
+	if (self.config.appid) {
+		arcgisUtils.getItem(self.config.appid).then(lang.hitch(self, function(response) {
+			lang.mixin(self.config, response.itemData.values);
 			//setup OAuth if oauth appid exists. In this siutation the oauthappid is specified in the 
 			//configuration panel. 
 			if (response.itemData.values && response.itemData.values.oauthappid) {
-				this._setupOAuth(response.itemData.values.oauthappid, this.config.sharinghost);
+				self._setupOAuth(response.itemData.values.oauthappid, self.config.sharinghost);
 			}
 			deferred.resolve(null);
 		}));
@@ -193,21 +195,22 @@ function _queryApplicationConfiguration () {
 	return deferred.promise;
 }
 
-function _queryOrganizationInformation () {
-	var deferred = new Deferred();
+function _queryOrganizationInformation () : dojo.Promise<any> {
+	var self : Application.Template = this;
+	var deferred = new Deferred<void>();
 	//Get default helper services or if app hosted by portal or org get the specific settings for that organization.
 	esriRequest({
-		url: this.config.sharinghost + "/sharing/rest/portals/self",
+		url: self.config.sharinghost + "/sharing/rest/portals/self",
 		content: {
 			"f": "json"
 		},
 		callbackParamName: "callback"
-	}).then(lang.hitch(this, function(response) {
-		this.config.helperServices = {};
-		lang.mixin(this.config.helperServices, response.helperServices);
+	}).then(lang.hitch(self, function(response) {
+		self.config.helperServices = {};
+		lang.mixin(self.config.helperServices, response.helperServices);
 		//Let's set the geometry helper service to be the app default.  
-		if (this.config.helperServices && this.config.helperServices.geometry && this.config.helperServices.geometry.url) {
-			esriConfig.defaults.geometryService = new GeometryService(this.config.helperServices.geometry.url);
+		if (self.config.helperServices && self.config.helperServices.geometry && self.config.helperServices.geometry.url) {
+			esriConfig.defaults.geometryService = new GeometryService(self.config.helperServices.geometry.url);
 		}
 		deferred.resolve(null);
 	}), function(error) {
@@ -217,7 +220,8 @@ function _queryOrganizationInformation () {
 	return deferred.promise;
 }
 
-function _queryUrlParams () {
+function _queryUrlParams () : any{
+	var self : Application.Template = this;
 	//This function demonstrates how to handle additional custom url parameters. For example 
 	//if you want users to be able to specify lat/lon coordinates that define the map's center or 
 	//specify an alternate basemap via a url parameter. 
@@ -226,8 +230,8 @@ function _queryUrlParams () {
 	//(center, basemap, theme) are only here as examples and can be removed if you don't plan on 
 	//supporting additional url parameters in your application. 
 	var paramItems = ['center', 'basemap', 'theme'];
-	var mixinParams = this._createUrlParamsObject(paramItems);
-	lang.mixin(this.config, mixinParams);
+	var mixinParams = self._createUrlParamsObject(paramItems);
+	lang.mixin(self.config, mixinParams);
 }
 
 var dojoProps = {

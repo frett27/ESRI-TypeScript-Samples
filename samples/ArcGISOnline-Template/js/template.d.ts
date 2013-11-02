@@ -10,14 +10,14 @@ declare module Application {
 		config : Config.Defaults;
 
 		constructor(supportsLocalization : boolean);
-		_init() : dojo.Promise<void>;
+		_init() : dojo.Promise<any>;
 		_initializeApplication() : void;
 		_createUrlParamsObject(items : Array<string>):any; 
-		_setupOAuth(id : string , portal : string);
-		_getLocalization();
-		_queryApplicationConfiguration();
-		_queryOrganizationInformation();
-		_queryUrlParams();
+		_setupOAuth(id : string , portal : string) : void;
+		_getLocalization() : dojo.Promise<any>;
+		_queryApplicationConfiguration() : dojo.Promise<any>;
+		_queryOrganizationInformation(): dojo.Promise<any>;
+		_queryUrlParams() : any;
 
 	}
 

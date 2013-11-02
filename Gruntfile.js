@@ -46,7 +46,8 @@ module.exports = function(grunt) {
                     sourcemap: false,
                     fullSourceMapPath: true,
                     force: true,
-                    declaration: false
+                    declaration: false,
+					comments : true
                 }
             }
 
