@@ -153,7 +153,7 @@ function _getLocalization () : dojo.Promise<any> {
 				}
 			}));
 			//add a dir attribute to the html tag. Then you can add special css classes for rtl languages
-			var dirNode = document.getElementsByTagName("html")[0];
+			var dirNode : any = document.getElementsByTagName("html")[0];
 			var classes = dirNode.className;
 			if (self.config.i18n.direction === "rtl") {
 				//need to add support for dj_rtl. 
