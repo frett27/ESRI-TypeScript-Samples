@@ -1,5 +1,5 @@
 
-# Writing Effective Widgets in TypeScript #
+# Writing Entreprise Widgets in TypeScript #
 
 Typescript is known as a tailored javacript, for enterprise application of huge and collaborative javascript applications. This article show how to bring this step to permit construct complex javascript widgets
 
