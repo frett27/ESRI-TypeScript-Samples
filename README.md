@@ -9,7 +9,10 @@ This repository demonstrate the use of ESRI-TypeScript definition to bring typin
 What's New
 --------
 
-__Since : 10/12/2013__, freeze the typescript compiler version to 0.9.1 as the new 0.9.5 imply some modifications in the bindings. should be ok for `npm install` :-)
+__Since : 10/12/2013__, freeze the typescript compiler version to 0.9.1 as the new 0.9.5 imply some modifications in the bindings. should be ok for `npm install` :-), as it is monitored by Travis, we should now be warned if something is wrong with the project.
+
+
+__Since : 10/12/2013__, new page for creating widgets with typescript : [https://github.com/frett27/ESRI-TypeScript-Samples/blob/master/WritingWidgetsInTypeScript.md]
 
 
 __Since : 27/10/2013__, we include a translation of the boilerplate project in typescript [https://github.com/Esri/application-boilerplate-js](https://github.com/Esri/application-boilerplate-js), permitting to start developping some ArcGIS Online templates.
