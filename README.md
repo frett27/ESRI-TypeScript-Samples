@@ -29,6 +29,8 @@ Getting Started with this version
 
 you must have GIT and NodeJS installed.
 
+`BE AWARE TO CLONE EVERY SUBMODULES BEFORE STARTING`
+
 
 on the command line, at the project root, install the grunt commande line, using :
 
