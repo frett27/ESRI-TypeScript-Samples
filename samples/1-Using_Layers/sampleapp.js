@@ -1,11 +1,5 @@
 // Module AMD associated to the sample application
-define(["require", "exports", "dojo/ready", "esri/map", "esri/layers/ImageParameters", "esri/layers/ArcGISDynamicMapServiceLayer"], function(require, exports, __ready__, __Map__, __ImageParameters__, __ArcGISDynamicMapServiceLayer__) {
-    /// <reference path="../../ESRI-TypeScript/esri.amd.d.ts" />
-    var ready = __ready__;
-    var Map = __Map__;
-    var ImageParameters = __ImageParameters__;
-    var ArcGISDynamicMapServiceLayer = __ArcGISDynamicMapServiceLayer__;
-
+define(["require", "exports", "dojo/ready", "esri/map", "esri/layers/ImageParameters", "esri/layers/ArcGISDynamicMapServiceLayer"], function(require, exports, ready, Map, ImageParameters, ArcGISDynamicMapServiceLayer) {
     return function () {
         // create the map with a default basemap (street) and add it inside the HTML mapDiv
         var map = new Map("map", {
@@ -16,7 +10,7 @@ define(["require", "exports", "dojo/ready", "esri/map", "esri/layers/ImageParame
 
         // specify the image parameters
         var imageParameters = new ImageParameters();
-        imageParameters.format = "jpeg";
+        imageParameters.format = "jpeg"; //set the image type to PNG24, note default is PNG8.
 
         // take a URL to a non cached map service.
         var dynamicMapServiceLayer = new ArcGISDynamicMapServiceLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Population_World/MapServer", {
@@ -28,4 +22,3 @@ define(["require", "exports", "dojo/ready", "esri/map", "esri/layers/ImageParame
         map.addLayer(dynamicMapServiceLayer);
     };
 });
-//# sourceMappingURL=sampleapp.js.map

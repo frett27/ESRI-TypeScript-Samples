@@ -34,7 +34,7 @@ class OAuthHelper implements Application.OAuthInitParameters {
              *   expiration:   <Number> // in minutes
              * }
              */
-            lang.mixin(this, parameters);
+            lang.mixin(this, <any>parameters);
             this.portalUrl = this.portal + "/sharing/rest";
             // Read OAuth response from the page url fragment if available,
             // and register with identity manager
@@ -66,7 +66,7 @@ class OAuthHelper implements Application.OAuthInitParameters {
 			redirect_uri = window.location.href.replace(/#.*$/, "");
 		}
 		authParameters.redirect_uri = redirect_uri;
-		var authUrl = this.portal.replace(/^http:/i, "https:") + "/sharing/oauth2/authorize?" + ioquery.objectToQuery(authParameters);
+		var authUrl = this.portal.replace(/^http:/i, "https:") + "/sharing/oauth2/authorize?" + ioquery.objectToQuery(<any>authParameters);
 		window.location = <any>authUrl;
 		return deferred;
 	}

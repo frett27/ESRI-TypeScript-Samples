@@ -59,7 +59,7 @@ import CheckBox=require("dijit/form/CheckBox");
 import registry=require("dijit/registry");
 import domUtils=require("esri/domUtils");
 
-var _TOCNode = (function(){ 
+var _TOCNode : any = (function(){ 
 
 
 
@@ -118,7 +118,7 @@ var _TOCNode = (function(){
       // if it is a group layer and no child layer is visible, then collapse
       if (this.data._subLayerInfos) {
         var noneVisible = true;
-        array.every(this.data._subLayerInfos, function(info){
+        array.every<any>(this.data._subLayerInfos, function(info){
           if (info.visible) {
             noneVisible = false;
             return false;
@@ -482,7 +482,7 @@ var _TOCNode = (function(){
         }
       }
       if (this._childTOCNodes.length > 0) {
-        array.forEach(this._childTOCNodes, function(child){
+        array.forEach<any>(this._childTOCNodes, function(child){
           child._adjustToState();
         });
       }
@@ -532,7 +532,7 @@ var _TOCNode = (function(){
     }
 	function _setSubLayerVisibilitiesFromGroup(lay){
 		if (lay._subLayerInfos && lay._subLayerInfos.length > 0 ){
-			array.forEach(lay._subLayerInfos, function(info){
+			array.forEach<any>(lay._subLayerInfos, function(info){
               info.visible = lay.visible;
 			  if (info._subLayerInfos && info._subLayerInfos.length > 0){
 			  	this._setSubLayerVisibilitiesFromGroup(info);
@@ -542,7 +542,7 @@ var _TOCNode = (function(){
 	}
     function _getVisibleLayers(){
       var vis = [];
-      array.forEach(this.rootLayer.layerInfos, function(layerInfo){
+      array.forEach<any>(this.rootLayer.layerInfos, function(layerInfo){
         if (layerInfo.subLayerIds) {
           // if a group layer is set to vis, all sub layer will be drawn regardless it's sublayer status
           return;
@@ -620,8 +620,7 @@ var _TOCNode = (function(){
 
 })(); 
 
-var _RootLayerTOC = (function() {
-
+var _RootLayerTOC : any = (function() {
 
 	 var _RootLayerTOCProps = {
 		constructor:constructeurRootLayerTOC,
@@ -703,7 +702,7 @@ var _RootLayerTOC = (function() {
         // generally id = index, this is to assure we find the right layer by ID
         // note: not all layers have an entry in legend response.
         var layerLookup = {};
-        array.forEach(layer.layerInfos, function(layerInfo){
+        array.forEach<any>(layer.layerInfos, function(layerInfo){
           layerLookup['' + layerInfo.id] = layerInfo;
           // used for later reference.
           layerInfo.visible = layerInfo.defaultVisibility;
@@ -717,7 +716,7 @@ var _RootLayerTOC = (function() {
         });
         // attached legend Info to layer info
         if (json.layers) {
-          array.forEach(json.layers, function(legInfo){
+          array.forEach<any>(json.layers, function(legInfo){
             var layerInfo = layerLookup['' + legInfo.layerId];
             if (layerInfo && legInfo.legend) {
               layerInfo._legends = legInfo.legend;
@@ -725,10 +724,10 @@ var _RootLayerTOC = (function() {
           });
         }
         // nest layer Infos
-        array.forEach(layer.layerInfos, function(layerInfo){
+        array.forEach<any>(layer.layerInfos, function(layerInfo){
           if (layerInfo.subLayerIds) {
             var subLayerInfos = [];
-            array.forEach(layerInfo.subLayerIds, function(id, i){
+            array.forEach<any>(layerInfo.subLayerIds, function(id, i){
               subLayerInfos[i] = layerLookup[id];
               subLayerInfos[i]._parentLayerInfo = layerInfo;
             });
@@ -739,7 +738,7 @@ var _RootLayerTOC = (function() {
         
         //finalize the tree structure in _tocInfos, skipping all sublayers because they were nested already.
         var tocInfos = [];
-        array.forEach(layer.layerInfos, function(layerInfo){
+        array.forEach<any>(layer.layerInfos, function(layerInfo){
           if (layerInfo.parentLayerId == -1) {
             tocInfos.push(layerInfo);
           }
@@ -795,7 +794,7 @@ var _RootLayerTOC = (function() {
       // 2012-07-23:
       // set the actual individual layerInfo's visibility after service's setVisibility call.
       if (!doNotRefresh) {
-        array.forEach(this.rootLayer.layerInfos, function(layerInfo){
+        array.forEach<any>(this.rootLayer.layerInfos, function(layerInfo){
           if (array.indexOf(visLayers, layerInfo.id) != -1) {
             layerInfo.visible = true;
           } else if (!layerInfo._subLayerInfos) {
@@ -891,7 +890,7 @@ var TOC = (function() {
 
     function _checkLoad(){
       var loaded = true;
-      array.every(this._rootLayerTOCs, function(widget){
+      array.every<any>(this._rootLayerTOCs, function(widget){
         if (!widget._loaded) {
           loaded = false;
           return false;
@@ -904,7 +903,7 @@ var TOC = (function() {
       }
     }
     function _adjustToState(){
-      array.forEach(this._rootLayerTOCs, function(widget){
+      array.forEach<any>(this._rootLayerTOCs, function(widget){
         widget._adjustToState();
       });
     }
@@ -930,7 +929,7 @@ var TOC = (function() {
 	 */
 	function findTOCNode(layer, serviceLayerId){
 		var w;
-		array.every(this._rootLayerTOCs, function(widget){
+		array.every<any>(this._rootLayerTOCs, function(widget){
 			if(widget.rootLayer == layer){
 				w = widget;
 				return false;
