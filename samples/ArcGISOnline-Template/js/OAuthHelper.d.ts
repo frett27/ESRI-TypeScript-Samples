@@ -1,4 +1,4 @@
-
+/// <reference path="../../../Dojo-TypeScript/dojo.d.ts" />
 
 declare module Application {
 
